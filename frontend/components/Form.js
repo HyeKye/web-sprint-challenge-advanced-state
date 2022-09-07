@@ -7,9 +7,7 @@ export function Form(props) {
   const { inputChange, form, postQuiz } = props
 
   const onChange = (evt) => {
-    console.log('id:', evt.target.id)
-    console.log('value:', evt.target.value)
-    actionCreators.inputChange({[evt.target.id]: evt.target.value});
+    inputChange({[evt.target.id]: evt.target.value});
   };
 
   const onSubmit = evt => {
@@ -49,7 +47,8 @@ export function Form(props) {
 }
 
 const mapStateToProps = state => {
-  return {form: state.form}
+  console.log(mapStateToProps)
+  return {form: state.form};
 }
 
-export default connect(mapStateToProps, {actionCreators})(Form)
+export default connect(mapStateToProps, actionCreators)(Form)

@@ -45,7 +45,7 @@ function Quiz(props) {
               </div>
             </div>
 
-            <button id="submitAnswerBtn" onClick={handlePostAnswerClick}>Submit answer</button>
+            <button disabled={answerId ? false : true} id="submitAnswerBtn" onClick={handlePostAnswerClick}>Submit answer</button>
           </>
         ) : 'Loading next quiz...' 
       }

@@ -52,6 +52,7 @@ const initialFormState = {
 function form(state = initialFormState, action) {
   switch (action.type) {
     case INPUT_CHANGE:
+      console.log(action)
       return {...state, ...action.payload};
     case RESET_FORM:
       return initialFormState;

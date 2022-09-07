@@ -23,6 +23,7 @@ export function setQuiz(quiz) {
  }
 
 export function inputChange(input) {
+  console.log(input)
   return{ type: INPUT_CHANGE, payload: input }
  }
 
@@ -63,16 +64,13 @@ export function postAnswer(answerObj) {
       .catch((err)=>console.log(err))
   }
 }
-export function postQuiz({
-  question_text, 
-  true_answer_text, 
-  false_answer_text, 
-}) {
+export function postQuiz(newQuiz) {
+  console.log(newQuiz.newQuestion)
   return function (dispatch) {
     axios.post(`http://localhost:9000/api/quiz/new`, {
-      question_text, 
-      true_answer_text, 
-      false_answer_text, 
+      question_text: newQuiz.newQuestion.trim(), 
+      true_answer_text: newQuiz.newTrueAnswer.trim(), 
+      false_answer_text: newQuiz.newFalseAnswer.trim(), 
     })
     .then(res => {
       dispatch(setMessage(`Congrats: "${res.data.question}" is a great question!`))
